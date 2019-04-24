@@ -4,10 +4,12 @@ export type Range = [number, number];
 
 export type Side = 'L' | 'R';
 
-export interface Row {
+export type Row = {
   rowKey: number;
+  _extraData?: any;
+} & {
   [propName: string]: CellValue;
-}
+};
 
 export interface Data {
   rawData: Row[];
@@ -83,7 +85,8 @@ export interface Rect {
 }
 
 export interface Focus {
-  active: boolean;
+  editing: boolean;
+  navigating: boolean;
   rowKey: number | null;
   columnName: string | null;
   readonly side: Side | null;

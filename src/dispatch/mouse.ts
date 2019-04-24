@@ -1,7 +1,7 @@
 import { Store, Side } from '../store/types';
 
-export function setFocusActive({ focus }: Store, active: boolean) {
-  focus.active = active;
+export function setNavigating({ focus }: Store, navigating: boolean) {
+  focus.navigating = navigating;
 }
 
 interface MouseEventInfo {

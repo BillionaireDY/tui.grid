@@ -3,7 +3,7 @@ import { createStore } from './store/create';
 import { Root } from './view/root';
 import { h, render } from 'preact';
 import { createDispatcher, Dispatch } from './dispatch/create';
-import { Store } from './store/types';
+import { Store, CellValue } from './store/types';
 import themeManager, { ThemeOptionPresetNames } from './theme/manager';
 
 /* eslint-disable */
@@ -177,5 +177,18 @@ export default class Grid {
 
   public showColumn(columnName: string) {
     this.dispatch('showColumn', columnName);
+  }
+
+  public setValue(rowKey: number, columnName: string, value: CellValue) {
+    this.dispatch('setValue', rowKey, columnName, value);
+  }
+
+  public getValue(rowKey: number, columnName: string): CellValue | null {
+    const targetRow = this.store.data.rawData.find((row) => row.rowKey === rowKey);
+    if (targetRow) {
+      return targetRow[columnName];
+    }
+
+    return null;
   }
 }

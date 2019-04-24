@@ -1,10 +1,12 @@
 import * as viewport from './viewport';
 import * as dimension from './dimension';
-import * as mouse from './mouse';
+import * as data from './data';
 import * as column from './column';
+import * as mouse from './mouse';
+import * as focus from './focus';
 import { Store } from '../store/types';
 
-const dispatchMap = { ...viewport, ...dimension, ...column, ...mouse };
+const dispatchMap = { ...viewport, ...dimension, ...data, ...column, ...mouse, ...focus };
 
 type DispatchMap = typeof dispatchMap;
 type DispatchFnKeys = keyof DispatchMap;
